@@ -1,6 +1,6 @@
 var config = {}
 
-config.zencoder = '378b81ecf4e01fd2bb302ed60841fa29';
+config.zencoder = 'ce887203717c4417267eeb7b59b55885';
 config.outputUrl = 's3://zencodertesting/deleteme/sockets/';
 config.notificationUrl = 'http://bx.htbx.net:3000/notify/';
 
