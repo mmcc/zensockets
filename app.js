@@ -114,6 +114,7 @@ app.post('/submit-job', function(req, res) {
     if (res.code == 201) {
       io.sockets.emit(random_string, {code: res.code, type: 'job.create', message: 'Job created!', job_id: res.body.id, outputs: res.body.outputs})
     } else {
+      console.log(res);
       io.sockets.emit(random_string, {code: res.code, type: 'job.create', message: 'Something has gone terribly wrong...'});
     }
   });
