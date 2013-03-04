@@ -14,13 +14,12 @@ $(function() {
   });
 
   /* Filepicker button */
-  $('#pick').click(function() {
+  $('#pick').click(function(e) {
+    e.preventDefault();
     filepicker.pick({
       mimetype: 'video/*'
     }, function(FPFile){
       videoSrc = FPFile.url;
-      console.log(FPFile);
-      console.log(videoSrc);
       $('#pick').html('<i class="icon-facetime-video"></i> ' + FPFile.filename).addClass('disabled');
       $('#start').removeClass('disabled');
     }, function(FPError){
@@ -29,13 +28,15 @@ $(function() {
   });
 
   /* Encode! button */
-  $('#start').click(function() {
+  $('#start').click(function(e) {
+    e.preventDefault();
     var input = videoSrc;
     var request_body = { input_file: input };
 
     $.post(serverPath + '/submit-job', request_body, function(data) {
       jobSocket(data);
       console.log('Sent job request...');
+      $('#start').append(' <i class="icon-spinner icon-spin" id="job-submit-spinner"></i>')
     });
   });
 
@@ -43,6 +44,7 @@ $(function() {
     socket.on(response.notification_namespace, function(data) {
       if (data.type == 'job.create') { // Just the initial job created callback
         if (data.code == 201) {
+          $('#job-submit-spinner').remove();
           $('#notifications').append("<div class='alert alert-success'><strong>Job submitted!</strong> File is currently being encoded into " + data.outputs.count + " formats. <a href='https://app.zencoder.com/jobs/" + data.job_id + "' target='_blank'>View job</a></div>");
           $('#outputs').html("<h2>Outputs</h2><div class='row-fluid'><ul class='thumbnails'></ul></div>");
           $.each(data.outputs, function(key, value) {

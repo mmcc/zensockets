@@ -3,14 +3,16 @@ extends layout
 block content
   h1= title
 
-  a(href='#', class='btn btn-info btn-large', id='pick')
-    i.icon-cloud-upload
-    &nbsp; Upload File
+  .row.buttons
+    .span12
+      a(href='#', class='btn btn-info btn-large', id='pick')
+        i.icon-cloud-upload
+        &nbsp; Upload File
 
-  &nbsp;
-  a(type='submit', class='btn btn-success btn-large disabled', id='start')
-    i.icon-cogs
-    &nbsp; Encode!
+      &nbsp;
+      a(type='submit', class='btn btn-success btn-large disabled', id='start')
+        i.icon-cogs
+        &nbsp; Encode!
 
   .row
     .span12

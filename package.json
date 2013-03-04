@@ -1,6 +1,6 @@
 {
   "name": "zensockets",
-  "version": "0.0.1-12",
+  "version": "0.0.1-21",
   "private": true,
   "scripts": {
     "start": "node app.js"
@@ -11,7 +11,7 @@
     "socket.io": "0.9",
     "zencoder": "*"
   },
-  "subdomain": "zensockets-filepicker",
+  "subdomain": "zensockets",
   "engines": {
     "node": "0.8.x"
   }
