@@ -4,13 +4,33 @@ $(function() {
   // var socket = io.connect('http://' + location.hostname + ':' + location.port);
   var socket = io.connect(serverPath);
 
+  var videoSrc;
+
+  // Filepicker setup
+  filepicker.setKey('AvyoZ1yfOTvmD439mK5pyz');
+
   socket.on('system', function (data) {
     console.log(data);
   });
 
+  /* Filepicker button */
+  $('#pick').click(function() {
+    filepicker.pick({
+      mimetype: 'video/*'
+    }, function(FPFile){
+      videoSrc = FPFile.url;
+      console.log(FPFile);
+      console.log(videoSrc);
+      $('#pick').html('<i class="icon-facetime-video"></i> ' + FPFile.filename).addClass('disabled');
+      $('#start').removeClass('disabled');
+    }, function(FPError){
+      console.log(FPError.toString());
+    });
+  });
+
   /* Encode! button */
   $('#start').click(function() {
-    var input = $('#input-file').val();
+    var input = videoSrc;
     var request_body = { input_file: input };
 
     $.post(serverPath + '/submit-job', request_body, function(data) {

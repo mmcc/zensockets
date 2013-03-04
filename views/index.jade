@@ -3,11 +3,14 @@ extends layout
 block content
   h1= title
 
-  .input-prepend.input-append
-    span.add-on
-      i.icon-film
-    input(type='text', value='s3://zencodertesting/test.mov', placeholder='my input file', class='span5', id='input-file')
-    a(type='submit', class='btn btn-success', id='start') Encode!
+  a(href='#', class='btn btn-info btn-large', id='pick')
+    i.icon-cloud-upload
+    &nbsp; Upload File
+
+  &nbsp;
+  a(type='submit', class='btn btn-success btn-large disabled', id='start')
+    i.icon-cogs
+    &nbsp; Encode!
 
   .row
     .span12
