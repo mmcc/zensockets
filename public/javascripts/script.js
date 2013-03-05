@@ -16,9 +16,7 @@ $(function() {
   /* Filepicker button */
   $('#pick').click(function(e) {
     e.preventDefault();
-    filepicker.pick({
-      mimetype: 'video/*'
-    }, function(FPFile){
+    filepicker.pick(function(FPFile){
       videoSrc = FPFile.url;
       $('#pick').html('<i class="icon-facetime-video"></i> ' + FPFile.filename).addClass('disabled');
       $('#start').removeClass('disabled');
@@ -103,6 +101,7 @@ $(function() {
         btn.removeClass().addClass('btn btn-small btn-info pull-right').html('<i class="icon-cloud-upload"></li> Uploading');
         $('#' + notification.output.id + ' .thumbnail img').remove();
         $('#' + notification.output.id + ' .thumbnail').prepend('<video id="hls_player" class="video-js vjs-default-skin" controls></video>');
+        _V_.options.flash.swf = "/video-js.swf";
         _V_("hls_player")
           .src({ src: notification.output.url, type: "application/x-mpegURL" })
           .volume(0.5)
