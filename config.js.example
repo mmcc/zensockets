@@ -2,6 +2,6 @@ var config = {}
 
 config.zencoder = 'ce887203717c4417267eeb7b59b55885';
 config.outputUrl = 's3://zencodertesting/deleteme/sockets/';
-config.notificationUrl = 'http://bx.htbx.net:3000/notify/';
+config.notificationUrl = 'http://zensockets.jit.su/notify/';
 
 module.exports = config;

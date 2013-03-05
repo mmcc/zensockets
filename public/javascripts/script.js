@@ -1,6 +1,6 @@
 $(function() {
 
-  var serverPath = 'http://zensockets.nodejitsu.com'; // 'http://localhost' if you're deploying your own application.
+  var serverPath = 'http://zensockets.jit.su'; // 'http://localhost' if you're deploying your own application.
   // var socket = io.connect('http://' + location.hostname + ':' + location.port);
   var socket = io.connect(serverPath);
 
