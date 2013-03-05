@@ -1,8 +1,8 @@
 $(function() {
 
-  var serverPath = 'http://zensockets.jit.su'; // 'http://localhost' if you're deploying your own application.
-  // var socket = io.connect('http://' + location.hostname + ':' + location.port);
-  var socket = io.connect(serverPath);
+  // 'http://localhost' if you're deploying your own application. We need to specify port 80 for io.connect or it will default to whatever port you're using for development
+  var serverPath = 'http://zensockets.jit.su';
+  var socket = io.connect(serverPath, {port: 80});
 
   socket.on('system', function (data) {
     console.log(data);
