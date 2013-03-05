@@ -1,4 +1,4 @@
-config/index.js
+config.js
 
 lib-cov
 *.seed
