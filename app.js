@@ -14,7 +14,7 @@ var express = require('express')
   , server = require('http').createServer(app)
   , io = require('socket.io').listen(server);
 
-var zc = new Zencoder();
+var zc = new Zencoder(config.zencoder);
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);

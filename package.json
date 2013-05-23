@@ -1,6 +1,6 @@
 {
   "name": "zensockets",
-  "version": "0.0.1-46",
+  "version": "0.0.1-49",
   "private": true,
   "scripts": {
     "start": "node app.js"

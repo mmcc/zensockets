@@ -22,7 +22,7 @@ $(function() {
   function jobSocket(response) {
     socket.on(response.notification_namespace, function(data) {
       if (data.type == 'job.create') { // Just the initial job created callback
-        if (!error) {
+        if (!data.error) {
           $('#notifications').append("<div class='alert alert-success'><strong>Job submitted!</strong> File is currently being encoded into " + data.outputs.count + " formats. <a href='https://app.zencoder.com/jobs/" + data.job_id + "' target='_blank'>View job</a></div>");
           $('#outputs').html("<h2>Outputs</h2><div class='row-fluid'><ul class='thumbnails'></ul></div>");
           $.each(data.outputs, function(key, value) {
