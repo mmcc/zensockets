@@ -9,7 +9,7 @@
     "express": "3.1.0",
     "jade": "0.29.x",
     "socket.io": "0.9",
-    "zencoder": "0.0.3"
+    "zencoder": "0.2.x"
   },
   "subdomain": "zensockets",
   "engines": {

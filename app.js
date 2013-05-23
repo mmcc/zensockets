@@ -9,7 +9,7 @@ var express = require('express')
   , http = require('http')
   , path = require('path')
   , config = require('./config')
-  , Zencoder = require ('zencoder').Zencoder
+  , Zencoder = require ('zencoder')
   , app = express()
   , server = require('http').createServer(app)
   , io = require('socket.io').listen(server);
@@ -49,7 +49,7 @@ app.post('/submit-job', function(req, res) {
 
   var notification_url = config.notificationUrl + random_string;
 
-  Zencoder.prototype.Job.create({
+  zc.Job.create({
     input: req.body.input_file,
     notifications: notification_url,
     outputs: [
@@ -110,13 +110,12 @@ app.post('/submit-job', function(req, res) {
         ]
       }
     ]
-  }, function(res) {
-    if (res.code == 201) {
-      io.sockets.emit(random_string, {code: res.code, type: 'job.create', message: 'Job created!', job_id: res.body.id, outputs: res.body.outputs})
-    } else {
-      console.log(res);
-      io.sockets.emit(random_string, {code: res.code, type: 'job.create', message: 'Something has gone terribly wrong...'});
+  }, function(err, data) {
+    if (err) {
+      io.sockets.emit(random_string, {error: true, type: 'job.create', message: 'Something has gone terribly wrong...'});
+      return;
     }
+    io.sockets.emit(random_string, {type: 'job.create', message: 'Job created!', job_id: data.id, outputs: data.outputs})
   });
   res.send(200, {message: 'Success!', notification_namespace: random_string});
 });
