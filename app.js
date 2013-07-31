@@ -19,7 +19,7 @@ var zc = new Zencoder(config.zencoder);
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/views');
-  app.set('view engine', 'jade');
+  app.set('view engine', 'handlebars');
   app.use(express.favicon());
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
@@ -67,7 +67,7 @@ app.post('/submit-job', function(req, res) {
       },
       {
         label: 'WebM',
-        url: 's3://zencodertesting/deleteme/sockets/output.webm',
+        url: config.outputUrl + 'output.webm'
         notifications: notification_url,
         public: true,
         thumbnails: {

@@ -6,13 +6,13 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "express": "3.1.0",
-    "jade": "0.29.x",
-    "socket.io": "0.9",
-    "zencoder": "0.2.x"
+    "express": "3.3.x",
+    "jade": "0.34.x",
+    "socket.io": "0.9.x",
+    "zencoder": "0.4.x"
   },
   "subdomain": "zensockets",
   "engines": {
-    "node": "0.8.x"
+    "node": ">=0.8.x"
   }
 }
